@@ -704,3 +704,4 @@ while True:
         count += 1
     else:
         print(result)
+        time.sleep(120)
