@@ -259,7 +259,6 @@ def create_acc(region):
         uid = resp_json.get('uid')
         print(resp_json)
         if not uid:
-            print(resp_json)
             return "ERROR: NO UID."
         #info = f"{uid}: {password}"
         #return info
@@ -546,7 +545,7 @@ def login_server(uid, password, access_token, open_id, response, status_code, na
             dat = GET_PAYLOAD_BY_DATA(BASE64_TOKEN, access_token, 1, response, status_code, name, uid, password, region)
             return dat
 
-    return None
+    return "BANNED"
 
 # ---------------- Protobuf parse helpers ---------------- #
 def parse_results(parsed_results):
@@ -704,4 +703,5 @@ while True:
         count += 1
     else:
         print(result)
-        time.sleep(120)
+        if result == "BANNED":
+            time.sleep(120)
