@@ -704,7 +704,8 @@ while True:
     else:
         if result == "BANNED":
             print(result)
-        else:
-            print(result)
             time.sleep(120)
             print("SLEEP")
+        else:
+            print(result)
+            
