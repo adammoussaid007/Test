@@ -446,14 +446,14 @@ def login(uid, password, access_token, open_id, response_hex, status_code, name,
     try:
         session = get_session()
         RESPONSE = session.post(URL, headers=headers, data=Final_Payload, verify=False)
-    except Exception:
-        return None
+    except Exception as e:
+        return f"ERROR in login {e}"
 
     # If login successful, extract JWT token and proceed to GetLoginData
     if RESPONSE.status_code == 200:
         # If text length small, it's probably an error
         if len(RESPONSE.text) < 10:
-            return None
+            return "BANNED"
 
         # Try to use protobuf parser path for non-ar/en languages
         if lang.lower() not in ["ar", "en"]:
@@ -489,7 +489,7 @@ def login(uid, password, access_token, open_id, response_hex, status_code, name,
         except Exception:
             pass
 
-    return None
+    return "BANNED"
 
 def login_server(uid, password, access_token, open_id, response, status_code, name, region):
     lang = get_region(region)
@@ -702,5 +702,9 @@ while True:
         print(bright_green + f"{count}: Successfully created the account. UID: {result['uid']}" + reset)
         count += 1
     else:
-        print(result)
-    time.sleep(10)
+        if result == "BANNED"
+            print(result)
+        else:
+            print(result)
+            time.sleep(120)
+            print("SLEEP")
