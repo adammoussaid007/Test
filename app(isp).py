@@ -702,7 +702,7 @@ while True:
         print(bright_green + f"{count}: Successfully created the account. UID: {result['uid']}" + reset)
         count += 1
     else:
-        if result == "BANNED"
+        if result == "BANNED":
             print(result)
         else:
             print(result)
